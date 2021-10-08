@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React,{useState}  from"react";
 import "./chatList.css";
 import ChatListItems from "./ChatListItems";
 
-export default class ChatList extends Component {
-  allChatUsers = [
+export default function ChatList(props) {
+  const  allChatUsers = [
     {
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
@@ -38,13 +38,10 @@ export default class ChatList extends Component {
     },
    
   ];
-  constructor(props) {
-    super(props);
-    this.state = {
-      allChats: this.allChatUsers,
-    };
-  }
-  render() {
+ 
+
+  const [allChats,setAllChats] = useState(allChatUsers)
+
     return (
       <div className="main__chatlist">
         <div className="chatlist__heading">
@@ -59,7 +56,7 @@ export default class ChatList extends Component {
           </div>
         </div>
         <div className="chatlist__items">
-          {this.state.allChats.map((item, index) => {
+          {allChats.map((item, index) => {
             return (
               <ChatListItems
                 name={item.name}
@@ -74,5 +71,5 @@ export default class ChatList extends Component {
         </div>
       </div>
     );
-  }
+ 
 }
