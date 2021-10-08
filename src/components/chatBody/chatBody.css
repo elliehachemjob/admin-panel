@@ -1,7 +1,10 @@
 .main__chatbody {
-  flex-grow: 1;
-  background-color: #8236CB;
+  background-color: #BFA2DB;
   border-radius: 10px;
   padding: 15px 20px;
   display: flex;
+  width:100%;
+  
 }
+
+
