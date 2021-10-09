@@ -75,7 +75,7 @@ export default function ChatContent (props) {
 
 
   const onStateChange = (e) => {
-    setMsg({ msg: e.target.value });
+    setMsg(e.target.value );
   };
 
   
