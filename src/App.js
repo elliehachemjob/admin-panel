@@ -1,12 +1,29 @@
-import React from "react";
+import React, {
+  Component,
+  useState,
+  createRef,
+  useEffect,
+  useRef,
+} from "react";
+
 import "./App.css";
-import ChatBody from "./components/chatBody/ChatBody";
+import ChatContent from "./ChatContent";
+import ChatList from "./ChatList";
 
 function App() {
+
+
+  
   return (
     <div className="__main">
-      <ChatBody />
+    <div className="main__chatbody">
+
+      <ChatList/>
+      <ChatContent/>
+      
     </div>
+    </div>
+
   );
 }
 

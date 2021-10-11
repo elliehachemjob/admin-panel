@@ -6,9 +6,6 @@ import React, {
   useRef,
 } from "react";
 
-import "./chatContent.css";
-import Avatar from "../chatList/Avatar";
-import ChatItem from "./ChatItem";
 
 export default function ChatContent(props) {
   const messagesEndRef = useRef(null);
@@ -18,7 +15,7 @@ export default function ChatContent(props) {
       image:
         "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
       type: "",
-      msg: "Hi Tim, How are you?",
+      msg: "Hi Ali, How are you?",
     },
     {
       key: 2,
@@ -39,15 +36,9 @@ export default function ChatContent(props) {
       image:
         "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
       type: "",
-      msg: "Awesome these days.",
+      msg: "I am fine.",
     },
-    {
-      key: 5,
-      image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-      type: "",
-      msg: "Awesome these days.",
-    },
+
   ];
 
   const [chat, setChat] = useState(chatItms);
@@ -101,15 +92,19 @@ export default function ChatContent(props) {
     scrollToBottom();
   }, []);
 
+  
   return (
+
     <div className="main__chatcontent">
       <div className="content__header">
         <div className="blocks">
           <div className="current-chatting-user">
-            <Avatar
-              isOnline="active"
-              image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU"
-            />
+          <div className="avatar">
+        <div className="avatar-img">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU" alt="#" />
+        </div>
+        <span className="active"></span>
+      </div>
             <p>Ali Ahmad</p>
           </div>
         </div>
@@ -122,15 +117,36 @@ export default function ChatContent(props) {
         <div className="chat__items">
           {chat.map((itm, index) => {
             return (
-              <ChatItem
-                animationDelay={index + 2}
-                key={itm.key}
-                user={itm.type ? itm.type : "me"}
-                msg={itm.msg}
-                image={itm.image}
-              />
+              <div
+              key={itm.key}
+              style={{ animationDelay: `0.8s` }}
+              className={`chat__item ${itm.type ? itm.type : "me"}`}
+            >
+              <div className="chat__item__content">
+                <div className="chat__msg">{itm.msg}</div>
+                <div className="chat__meta">
+                  <span>16 mins ago</span>
+                  <span>Seen 1.03PM</span>
+                </div>
+              </div>
+               <div className="avatar">
+        <div className="avatar-img">
+          <img src={itm.image} alt="#" />
+        </div>
+        <span className="active"></span>
+      </div>
+            </div>
+
+
+
+
             );
           })}
+
+
+
+
+          
           <div ref={messagesEndRef} />
         </div>
       </div>
